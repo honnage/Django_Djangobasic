@@ -10,5 +10,13 @@
     <p>Hello </p>
     <p>ชื่อบทความ {{ name }}</p>
     <p>ผู้แต่ง  {{ author }}</p>
+
+    <h2>ป้ายกำกับ</h2>
+    <ul>
+        {% for tag in tags %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
+   
 </body>
 </html>
