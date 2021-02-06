@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block content %}
     <h2>HomePage</h2>
     <p>Hello </p>
     <p>ชื่อบทความ {{ name }}</p>
@@ -17,11 +12,11 @@
             <li>{{ tag }}</li>
         {% endfor %}
     </ul>
+    
     <h2>ระดับความนิยม</h2>
     {% if rating >= 3 %}
         ดีมาก
     {% else %}
         ไม่ได้ความนิยม
     {% endif%}
-</body>
-</html>
+{% endblock %}
