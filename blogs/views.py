@@ -15,3 +15,6 @@ def hello(request):
 
 def page1(request):
     return render(request, 'page1.html')
+
+def createForm(request):
+    return render(request, 'form.html')
