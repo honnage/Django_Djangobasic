@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Post
 from django.contrib.auth.models import User
 # Create your views here.
@@ -13,22 +13,36 @@ def page1(request):
 def createForm(request):
     return render(request, 'form.html')
 
-def addBlog(request):
+
+
+def addUser(request):
     username = request.POST['username']
     password = request.POST['password']
     repassword = request.POST['repassword']
     email = request.POST['email']
     firstname = request.POST['firstname']
     lastname = request.POST['lastname']
-    
-    user=User.objects.create_user(
-        username=username,
-        password=password,
-        email=email,
-        first_name=firstname,
-        last_name=lastname
-        )
 
-    user.save()
+    if password == repassword :
+        if User.objects.filter(username=username).exists():
+            print("Username นี้มีคนใช้แล้ว")
+            return redirect('/createForm')
+        elif User.objects.filter(email=email).exists():
+            print("Email นี้มีคนลงทะเบียนแล้ว")
+            return redirect('/createForm')
+        else:
 
-    return render(request,'result.html')
+            user=User.objects.create_user(
+                username=username,
+                password=password,
+                email=email,
+                first_name=firstname,
+                last_name=lastname
+                )
+
+            user.save()
+            print("ลงทะเบียนสำเร็จ")
+            return redirect('/')
+    else :
+        print("Password ไม่ตรงกัน")
+        return redirect('/createForm')
