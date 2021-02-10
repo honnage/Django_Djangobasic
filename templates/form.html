@@ -1,20 +1,42 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h2 align="center">เขียนบทความ</h2>
+    <h2 align="center">ลงทะเบียน</h2>
     <form action="addForm" method="POST">
         {% csrf_token %} 
         <div class="form-group my-2">
-            <label for="">ชื่อบทความ</label>
-            <input type="text" class="form-control" name="name">
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="username">
         </div>
 
         <div class="form-group my-2">
-            <label for="">รายละเอียดบทความ</label>
-            <input type="text" class="form-control" name="description">
+            <label for="">Password</label>
+            <input type="password" class="form-control" name="password">
         </div>
 
-        <input type="submit" value="บันทึกบทความ" class="btn btn-primary">
+        <div class="form-group my-2">
+            <label for="">Re-Password</label>
+            <input type="password" class="form-control" name="repassword">
+        </div>
+
+        <div class="form-group my-2">
+            <label for="">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+
+        <div class="form-group my-2">
+            <label for="">FirstName</label>
+            <input type="text" class="form-control" name="firstname">
+        </div>
+
+        <div class="form-group my-2">
+            <label for="">LastName</label>
+            <input type="text" class="form-control" name="lastname">
+        </div>
+
+      
+
+        <input type="submit" value="ลงทะเบียน" class="btn btn-primary">
     </form>
 
 
