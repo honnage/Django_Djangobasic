@@ -23,17 +23,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="/page1">ภาคกลาง</a>
               </li>
+
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="">สวัสดี , {{user.first_name}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">ออกจากระบบ</a>
+              </li>
+              {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="/createForm">ลงทะเบียน</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/loginForm">เข้าใช้งาน</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-              </li>
+              {% endif %}
+
               <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
