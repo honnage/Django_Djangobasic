@@ -63,3 +63,7 @@ def login(request):
     else :
         messages.info(request, 'ไม่พบข้อมูล')
         return redirect('/loginForm')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
