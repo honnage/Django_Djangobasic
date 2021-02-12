@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2 align="center">ลงชื่อเข้าใช้</h2>
+
+    {% if messages %}
+    <div class="alert alert-danger" role="alert">
+        {% for message in messages %}
+            <b>{{message}}</b> 
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %} 
+        <div class="form-group my-2">
+            <label for="">Username</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+
+        <div class="form-group my-2">
+            <label for="">Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <input type="submit" value="Login" class="btn btn-primary">
+    </form>
+
+
+{% endblock %}

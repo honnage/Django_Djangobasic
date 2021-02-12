@@ -15,6 +15,9 @@ def page1(request):
 def createForm(request):
     return render(request, 'form.html')
 
+def login(request):
+    return render(request, 'login.html')
+
 def addUser(request):
     username = request.POST['username']
     password = request.POST['password']
@@ -46,3 +49,4 @@ def addUser(request):
     else :
         messages.info(request, 'Password ไม่ตรงกัน')
         return redirect('/createForm')
+
