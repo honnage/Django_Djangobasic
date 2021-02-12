@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,auth
 from django.contrib import messages
 
 # Create your views here.
@@ -15,7 +15,7 @@ def page1(request):
 def createForm(request):
     return render(request, 'form.html')
 
-def login(request):
+def loginForm(request):
     return render(request, 'login.html')
 
 def addUser(request):
@@ -50,3 +50,16 @@ def addUser(request):
         messages.info(request, 'Password ไม่ตรงกัน')
         return redirect('/createForm')
 
+def login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+
+    #check username, password
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None :
+        auth.login(request,user)
+        return redirect('/')
+    else :
+        messages.info(request, 'ไม่พบข้อมูล')
+        return redirect('/loginForm')
